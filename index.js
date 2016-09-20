@@ -8,20 +8,13 @@ By Jonny Strömberg (www.jonnystromberg.com, www.listjs.com)
 var document = window.document,
   getByClass = require('./src/utils/get-by-class'),
   extend = require('./src/utils/extend'),
-  indexOf = require('./src/utils/index-of'),
-  events = require('./src/utils/events'),
-  toString = require('./src/utils/to-string'),
-  naturalSort = require('./src/utils/natural-sort'),
-  classes = require('./src/utils/classes'),
-  getAttribute = require('./src/utils/get-attribute'),
-  toArray = require('./src/utils/to-array');
+  getAttribute = require('./src/utils/get-attribute');
 
 var List = function(id, options, values) {
 
   var self = this,
     init,
-    Item = require('./src/item')(self),
-    addAsync = require('./src/add-async')(self);
+    Item = require('./src/item')(self);
 
   init = {
     start: function() {
@@ -42,13 +35,7 @@ var List = function(id, options, values) {
       self.utils          = {
         getByClass: getByClass,
         extend: extend,
-        indexOf: indexOf,
-        events: events,
-        toString: toString,
-        naturalSort: naturalSort,
-        classes: classes,
         getAttribute: getAttribute,
-        toArray: toArray
       };
 
       self.utils.extend(self, options);
@@ -59,9 +46,7 @@ var List = function(id, options, values) {
 
       self.parse      = require('./src/parse')(self);
       self.templater  = require('./src/templater')(self);
-      self.search     = require('./src/search')(self);
       self.filter     = require('./src/filter')(self);
-      self.sort       = require('./src/sort')(self);
 
       this.handlers();
       this.items();
