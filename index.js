@@ -6,9 +6,7 @@ By Jonny Strömberg (www.jonnystromberg.com, www.listjs.com)
 "use strict";
 
 var document = window.document,
-  getByClass = require('./src/utils/get-by-class'),
-  extend = require('./src/utils/extend'),
-  getAttribute = require('./src/utils/get-attribute');
+  extend = require('./src/utils/extend');
 
 var List = function(id, options, values) {
 
@@ -33,16 +31,14 @@ var List = function(id, options, values) {
       self.plugins        = {};
       self.valueNames     = [];
       self.utils          = {
-        getByClass: getByClass,
         extend: extend,
-        getAttribute: getAttribute,
       };
 
       self.utils.extend(self, options);
 
       self.listContainer = (typeof(id) === 'string') ? document.getElementById(id) : id;
       if (!self.listContainer) { return; }
-      self.list       = getByClass(self.listContainer, self.listClass, true);
+      self.list       = self.listContainer.getElementsByClassName(self.listClass)[0];
 
       self.parse      = require('./src/parse')(self);
       self.templater  = require('./src/templater')(self);
