@@ -1,3 +1,8 @@
+# About This Fork
+This fork removes **search** and **sort**, leaving just **filters**, it also removes legacy browser support*, and is ~2.5KB when minified and gzipped, compared to the original's 5KB.
+
+\* removes [getAttribute](https://github.com/javve/list.js/blob/master/src/utils/get-attribute.js) and [getElementsByClassName](https://github.com/javve/list.js/blob/master/src/utils/get-by-class.js)
+
 # List.js
 Perfect library for adding **search**, **sort**, **filters** and **flexibility** to
 **tables**, **lists** and various HTML elements. Built to be invisible and work on existing HTML.
